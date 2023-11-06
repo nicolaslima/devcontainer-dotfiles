@@ -107,28 +107,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# source /Users/lima/Documents/configs/iterm2/alias.sh
-
-# SPACESHIP_PROMPT_ORDER=(
-#   # time          # Time stamps section
-#   # user          # Username section
-#   dir           # Current directory section
-#   # host          # Hostname section
-#   git           # Git section (git_branch + git_status)
-#   # package       # Package version
-#   # node          # Node.js section
-#   # ruby          # Ruby section
-#   # venv          # virtualenv section
-#   # pyenv         # Pyenv section
-#   line_sep      # Line break
-#   battery       # Battery level and status
-#   jobs          # Background jobs indicator
-#   # exit_code     # Exit code section
-#   char          # Prompt character
-# )
-# SPACESHIP_RPROMPT_ORDER=(
-#   exec_time     # Execution time
-# )
+DISABLE_AUTO_UPDATE=true
+DISABLE_UPDATE_PROMPT=true
+export HISTFILE=/dc/shellhistory/.zsh_history
+export PROMPT_COMMAND='history -a'
+sudo chown -R vscode /dc/shellhistory
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
