@@ -1,10 +1,5 @@
-# Desativa p10k em automações do VSCode (agent/tasks)
-if [[ -n "$VSCODE_SHELL_INTEGRATION" ]]; then
-  POWERLEVEL9K_INSTANT_PROMPT=off
-  ZSH_THEME=""
-  PROMPT='%m:%~$ '
-  return 0 2>/dev/null || exit 0
-fi
+# Desativa p10k APENAS em automações do VSCode (via automationProfile)
+[[ -n "$VSCODE_SHELL_AUTOMATION" ]] && { PROMPT='%m:%~$ '; return 0; }
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
