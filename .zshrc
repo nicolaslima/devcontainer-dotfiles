@@ -1,3 +1,16 @@
+# =============================================================================
+# VSCODE AUTOMATION DETECTION - Shell limpo para tasks/debug do VSCode
+# Detecta se é automação (VSCODE_SHELL_AUTOMATION) e usa prompt simples
+# =============================================================================
+if [[ -n "$VSCODE_SHELL_AUTOMATION" ]]; then
+  export PROMPT='%m:%1~$ '
+  export HISTFILE=/dc/shellhistory/.zsh_history
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use 2>/dev/null
+  return 0 2>/dev/null || exit 0
+fi
+# =============================================================================
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
