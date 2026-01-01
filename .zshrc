@@ -1,5 +1,5 @@
 # Desativa p10k APENAS em automações do VSCode (via automationProfile)
-[[ -n "$VSCODE_SHELL_AUTOMATION" ]] && { PROMPT='%m:%~$ '; return 0; }
+# [[ -n "$VSCODE_SHELL_AUTOMATION" ]] && { PROMPT='%m:%~$ '; return 0; }
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -126,3 +126,24 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
+
+# ============================================
+# VS Code Shell Integration for Copilot
+# Fix for terminal completion detection issue
+# https://github.com/orgs/community/discussions/161238
+# ============================================
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    # Load VS Code shell integration if available
+    [[ -f "$(code --locate-shell-integration-path zsh 2>/dev/null)" ]] && \
+        . "$(code --locate-shell-integration-path zsh)"
+
+    # Disable RPROMPT in VS Code (causes detection issues)
+    unset RPROMPT
+    unset RPS1
+
+    # Ensure simple prompt format for command detection
+    typeset -g POWERLEVEL9K_DISABLE_RPROMPT=true
+
+    # Disable transient prompt (can cause issues)
+    typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
+fi
