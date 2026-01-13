@@ -147,3 +147,6 @@ if [[ "$TERM_PROGRAM" == "vscode" ]]; then
     # Disable transient prompt (can cause issues)
     typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
 fi
+
+# taskfile terminal autocomplete
+eval "$(task --completion zsh)"
